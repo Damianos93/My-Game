@@ -1,0 +1,8 @@
+body{
+    background-image: url(../images/deathstar.jpg);
+}
+
+img {
+	width: 15rem;
+	position: fixed;
+}
