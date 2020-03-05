@@ -1,0 +1,42 @@
+// let jabba = document.createElement("img")
+// jabba.src = "./images/jabba.gif"
+
+// let gameArea = document.getElementById("gameArea")
+// gameArea.append(jabba)
+
+
+
+function isTouching(a, b) {
+    const aRect = a.getBoundingClientRect();
+    const bRect = b.getBoundingClientRect();
+
+    return !(
+        aRect.top + aRect.height < bRect.top - 20 ||
+        aRect.top > bRect.top + bRect.height - 20 ||
+        aRect.left + aRect.width < bRect.left - 20 ||
+        aRect.left > bRect.left + bRect.width - 20
+    );
+}
+
+window.addEventListener("keydown", game.myVader.moveVader)
+window.addEventListener("keydown", game.myEmperor.moveEmperor)
+
+
+// function moveOff(officerImg) {
+//     let randomX = Math.floor(Math.random() * window.innerHeight)
+//     let randomY = Math.floor(Math.random() * window.innerWidth)
+
+
+//     officerImg.style.left = `${randomX}px`;
+//     officerImg.style.top = `${randomY}px`;
+// }
+// let mover=0;
+// function requests(){
+//     jabba.style.left = `${mover}px`;
+//     mover++;
+
+//     requestAnimationFrame(requests)
+// }
+
+// requests()
+

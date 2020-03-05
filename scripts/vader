@@ -1,0 +1,113 @@
+class Vader {
+  constructor() {
+    // this.position = position;
+    this.vaderP;
+  }
+  throwCookie() {
+    let cookie = createCookieElement()
+    gameArea.appendChild(cookie)
+    let cookieThrow = new Audio('./music/wooooosh.wav')
+    cookieThrow.play()
+    moveCookie(cookie)
+    // cookieThrow.pause()
+  }
+
+  createCookieElement() {
+    let xPosition = parseInt(window.getComputedStyle(this).getPropertyValue('left'))
+    let yPosition = parseInt(window.getComputedStyle(this).getPropertyValue('top'))
+    let newCookie = document.createElement('img')
+    newCookie.src = 'images/cookie.png'
+    newCookie.classList.add('cookie')
+    newCookie.style.left = `${xPosition}px`
+    console.log(xPosition)
+    newCookie.style.top = `${yPosition - 10}px`
+    return newCookie;
+  }
+
+  moveCookie(cookie) {
+    let cookieInterval = setInterval(() => {
+      let xPosition = parseInt(cookie.style.left)
+
+      if (xPosition === window.innerWidth) {
+        cookie.remove()
+        clearInterval(cookieInterval)
+      } else {
+        cookie.style.left = `${xPosition + 4}px`
+      }
+    }, 1)
+  }
+
+  moveVader(event) {
+    switch (event.key) {
+      case "ArrowUp":
+        event.preventDefault()
+        moveUp(this.vaderP)
+        break;
+      case "ArrowDown":
+        event.preventDefault()
+        moveDown(this.vaderP)
+        break;
+      case " ":
+        event.preventDefault()
+        throwCookie()
+      default:
+        break;
+    }
+    // if (isTouching(createCookieElement(), emperor)) {
+    //   alert("choked")
+    // }
+  }
+
+  render() {
+    this.vaderP = document.createElement("img")
+    this.vaderP.src = "./images/cookievader.png"
+    this.vaderP.style.position = "fixed"
+    this.vaderP.style.left = "1rem";
+    this.vaderP.style.height = "150px"
+    let gameArea = document.getElementById("gameArea")
+    gameArea.append(this.vaderP)
+  }
+  // moveUp(person) {
+  //   let topPosition = window.getComputedStyle(person).getPropertyValue('top')
+  //   if (person.style.top === "0px") {
+  //     return
+  //   } else {
+  //     if (person === game.myVader) {
+  //       let position = parseInt(topPosition)
+  //       position -= 17
+  //       person.style.top = `${position}px`
+  //     }
+  //     else {
+  //       let position = parseInt(topPosition)
+  //       position -= 30
+  //       person.style.top = `${position}px`
+  //     }
+  //   }
+  // }
+
+  // moveDown(person) {
+  //   let topPosition = window.getComputedStyle(person).getPropertyValue('top')
+  //   if ((fromPxToNumber(person.style.top) + person.height) >= window.innerHeight) {
+  //     position = 0;
+  //     person.style.top = `${position}px`
+  //     return
+  //   } else {
+  //     if (person === this) {
+  //       let position = parseInt(topPosition)
+  //       position += 17
+  //       person.style.top = `${position}px`
+  //     }
+  //     else {
+  //       let position = parseInt(topPosition)
+  //       position += 35
+  //       person.style.top = `${position}px`
+  //     }
+  //   }
+  // }
+  fromPxToNumber(pixel) {
+    return parseInt(pixel.split("px")[0])
+  }
+}
+
+// let myVader= new Vader()
+// console.log(myVader)
