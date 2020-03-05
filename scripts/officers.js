@@ -1,5 +1,8 @@
 class Officer {
-    constructor(position){
-        this.position=position
+    constructor(x,y){
+        this.x = window.innerWidth;
+        this.y = Math.floor(Math.random() * (window.innerHeight));
     }
+
+  
 }

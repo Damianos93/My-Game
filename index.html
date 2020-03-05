@@ -1,23 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="styles/styles.css">
 </head>
+
 <body>
-<div class="" id="game">
-<img src="https://media.tenor.com/images/d82683f4ed8c0db3af0b14754bd794ed/tenor.gif" id="vader" alt="">
+  <div id='gameArea'>
 
-</div>
+    <audio src="./music/wooooosh.wav" id="myAudio"></audio>
 
+    <img src="./images/cookie.png"  id="cookie" alt="">
+    <img id='hero' src="./images/cookievader.png">
+    <!-- <img src="./images/officer.png" id="officer" alt=""> -->
+    <!-- <img src="./images/trooper.gif" id="officer" alt=""> -->
+    <!-- <img src="./images/jabba.gif" id="jabba" alt=""> -->
 
-    <script src="scripts/render.js"></script>
-    <script src="scripts/officers.js"></script>
-    <script src="scripts/starWarsGame.js"></script>
-    <script src="scripts/vader.js"></script>
-    <script src="scripts/script.js"></script>
-    <script src="../../app.js"></script>
+    <!-- <h4 id="instructions-text">Don't let officers talk back</h4> -->
+    <!-- <div id="start-button">
+          <h1>Choke</h1>
+        </div>
+      </div>
+
+      <div id="score"><h2>Score: <span>0</span></h2></div> -->
+  </div>
+  <script src="scripts/starWarsGame.js"></script>
+  <script src="scripts/officers.js"></script>
+  <script src="scripts/vader.js"></script>
+  <script src="scripts/render.js"></script>
+  <script src="scripts/script.js"></script>
+
 </body>
+
 </html>

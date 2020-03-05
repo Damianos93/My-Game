@@ -2,81 +2,109 @@ class Vader {
     constructor(startPostionArr){
         this.travelLog = [];
         this.direction = "S";
-        this.position = {
-            x: 0,
-            y: 0
-        };
+        this.position = startPostionArr;
     }
     turnLeft(){
-        switch (this.position) {
-            case "S":
-                this.position="E"
-                break;
+        switch(this.direction){
             case "N":
-                this.position="W"
+                this.direction = "W";
                 break;
             case "W":
-                this.position="S"
+                this.direction = "S";
+                break;
+            case "S":
+                this.direction = "E";
                 break;
             case "E":
-                this.position="N"
+                this.direction = "N";
                 break;
+            default:
         }
+    
     }
     turnRight(){
-        switch (this.position) {
-            case "S":
-                this.position="W"
-                break;
+        switch(this.direction){
             case "N":
-                this.position="E"
+                this.direction = "E";
                 break;
             case "W":
-                this.position="N"
+                this.direction = "N";
+                break;
+            case "S":
+                this.direction = "W";
                 break;
             case "E":
-                this.position="S"
+                this.direction = "S";
                 break;
+            default:
         }
+        
     }
     moveForward(){
         this.travelLog.push(this.position);
-        switch (this.position) {
-            case "S":
-                if(this.position[1] === 9){
-                    console.log("Cant move there")
-                } else {
-                    this.position[1]++;
-                }
-                break;
-            case "N":
-                if(this.position[1] === 0){
-                    console.log("Cant move there")
+        switch(this.direction){
+            case "N":  
+                if(this.position[1] === 0) {
+                    
                 } else {
                     this.position[1]--;
                 }
                 break;
             case "W":
-                if(this.position[0] === 0){
-                    console.log("Cant move there")
+                if(this.position[0] === 0) {
+                    
                 } else {
-                    this.position[0]++;
+                    this.position[0]--;
+                }
+                break;
+            case "S":
+                if(this.position[1] === 9) {
+            
+                } else {
+                    this.position[1]++;
                 }
                 break;
             case "E":
-                if(this.position[0] === 9){
-                    console.log("Cant move there")
+                if(this.position[0] === 9) {
+            
                 } else {
                     this.position[0]++;
                 }
-                break;
+                break;  
+            default:
         }
-    }    
-    render(){
-        const $vader = document.querySelector('#vader');
-        $vader.style.transform = 'scale(1,1)';
-        $vader.style.bottom = `${this.position.y}px`;
-        $vader.style.left = `${this.position.x}px`;
     }
-    
+    instructRover(listOfCommands){
+        for(let i = 0; i < listOfCommands.length; i++) {
+            switch(listOfCommands[i]){
+                case "l":
+                    this.turnLeft();
+                    break;
+                case "r":
+                    this.turnRight();
+                    break;
+                case "f":
+                    this.moveForward();
+                    break;
+                default:
+                    
+            }
+        }
+    }
+    outOfBounds(){
+        if(this.position[1] === 0 && this.direction === "N") {
+            
+        } 
+        else if(this.position[0] === 0 && this.direction === "W") {
+            
+        } 
+        else if(this.position[1] === 9 && this.position === "S") {
+            
+        }
+        else if(this.position[0] === 9 && this.direction === "E") {
+            
+        }  else {
+            return false
+        }
+    }
 }
