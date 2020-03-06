@@ -1,20 +1,21 @@
 class Emperor {
     constructor(position) {
-        // this.position = position;
+        this.emperorP;
+        this.moveEmperor = this.moveEmperor.bind(this)
     }
     moveEmperor(event) {
         switch (event.key) {
-            case "w":
+            case "ArrowUp":
                 event.preventDefault()
-                moveUp(this)
+                moveUp(this.emperorP)
                 break;
-            case "s":
+            case "ArrowDown":
                 event.preventDefault()
-                moveDown(this)
+                moveDown(this.emperorP)
                 break;
-            case "q":
+            case " ":
                 event.preventDefault()
-                throwLightning()
+                this.throwLightning()
                 break;
             default:
                 break;
@@ -22,48 +23,48 @@ class Emperor {
     }
 
     render() {
-        let emperorP = document.createElement("img")
-        emperorP.src = "./images/emperoris.gif"
+        this.emperorP = document.createElement("img")
+        this.emperorP.src = "./images/emperoris.gif"
         let gameArea = document.getElementById("gameArea")
-        emperorP.style.position = "fixed"
-        emperorP.style.left = "88rem";
-        gameArea.append(emperorP)
+        this.emperorP.style.position = "fixed"
+        this.emperorP.style.left = "88rem";
+        gameArea.append(this.emperorP)
     }
 
-
     throwLightning() {
-        let light = createLightElement()
+        let light = this.createLightElement()
         gameArea.appendChild(light)
         let lightThrow = new Audio('./music/wooooosh.wav')
         lightThrow.play()
-        moveLightning(light)
+        this.moveLightning(light)
         // cookieThrow.pause()
     }
 
 
     createLightElement() {
-        let xPosition = parseInt(window.getComputedStyle(emperor).getPropertyValue('right'))
-        let yPosition = parseInt(window.getComputedStyle(emperor).getPropertyValue('top'))
+        let xPosition = parseInt(window.getComputedStyle(this.emperorP).getPropertyValue('right'))
+        let yPosition = parseInt(window.getComputedStyle(this.emperorP).getPropertyValue('top'))
         let newLight = document.createElement('img')
         newLight.src = './images/lights.gif'
         newLight.classList.add('light')
         newLight.style.right = `${xPosition}px`
-        newLight.style.top = `${yPosition - 10}px`
+        newLight.style.top = `${yPosition + 40}px`
         return newLight;
     }
-
 
     moveLightning(light) {
         let lightInterval = setInterval(() => {
             let xPosition = parseInt(light.style.right)
             if (xPosition === window.innerWidth) {
                 light.remove()
+                clearInterval(lightInterval)
             } else {
                 light.style.right = `${xPosition + 4}px`
             }
         }, 1)
     }
-     moveUp(person) {
+
+    moveUp(person) {
         let topPosition = window.getComputedStyle(person).getPropertyValue('top')
         if (person.style.top === "0px") {
             return
@@ -80,8 +81,8 @@ class Emperor {
             }
         }
     }
-    
-     moveDown(person) {
+
+    moveDown(person) {
         let topPosition = window.getComputedStyle(person).getPropertyValue('top')
         if ((fromPxToNumber(person.style.top) + person.height) >= window.innerHeight) {
             position = 0;
@@ -100,7 +101,7 @@ class Emperor {
             }
         }
     }
-     fromPxToNumber(pixel) {
+    fromPxToNumber(pixel) {
         return parseInt(pixel.split("px")[0])
     }
 }

@@ -3,9 +3,13 @@ class Game {
         this.myVader = new Vader()
         this.myEmperor = new Emperor()
     }
+    start(){
+        game.myVader.render()
+        game.myEmperor.render()
+    }
 
 }
 
 const game = new Game()
-game.myVader.render()
-game.myEmperor.render()
+
+game.start()

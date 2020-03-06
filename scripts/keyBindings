@@ -1,18 +1,14 @@
 function moveUp(person) {
+    let test = this
     let topPosition = window.getComputedStyle(person).getPropertyValue('top')
     if (person.style.top === "0px") {
         return
-    } else {
-        if (person === game.vader) {
-            let position = parseInt(topPosition)
-            position -= 17
-            person.style.top = `${position}px`
-        }
-        else {
-            let position = parseInt(topPosition)
-            position -= 30
-            person.style.top = `${position}px`
-        }
+    }
+    else {
+        let position = parseInt(topPosition)
+        position -= 30
+        person.style.top = `${position}px`
+
     }
 }
 
@@ -23,18 +19,12 @@ function moveDown(person) {
         person.style.top = `${position}px`
         return
     } else {
-        if (person === vader) {
-            let position = parseInt(topPosition)
-            position += 17
-            person.style.top = `${position}px`
-        }
-        else {
-            let position = parseInt(topPosition)
-            position += 35
-            person.style.top = `${position}px`
-        }
+        let position = parseInt(topPosition)
+        position += 35
+        person.style.top = `${position}px`
     }
 }
+
 function fromPxToNumber(pixel) {
     return parseInt(pixel.split("px")[0])
 }

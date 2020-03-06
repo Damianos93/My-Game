@@ -1,7 +1,8 @@
 // let jabba = document.createElement("img")
 // jabba.src = "./images/jabba.gif"
 
-// let gameArea = document.getElementById("gameArea")
+let gameArea = document.getElementById("gameArea")
+let back = document.querySelector(".back")
 // gameArea.append(jabba)
 
 
@@ -17,9 +18,14 @@ function isTouching(a, b) {
         aRect.left > bRect.left + bRect.width - 20
     );
 }
-
+gameArea.classList.add("invis")
 window.addEventListener("keydown", game.myVader.moveVader)
 window.addEventListener("keydown", game.myEmperor.moveEmperor)
+let button = document.querySelector(".back button")
+button.addEventListener("click",function(){
+back.classList.add("invis")
+gameArea.classList.remove("invis")
+})
 
 
 // function moveOff(officerImg) {
