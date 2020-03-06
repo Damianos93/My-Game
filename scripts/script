@@ -22,9 +22,9 @@ gameArea.classList.add("invis")
 window.addEventListener("keydown", game.myVader.moveVader)
 window.addEventListener("keydown", game.myEmperor.moveEmperor)
 let button = document.querySelector(".back button")
-button.addEventListener("click",function(){
-back.classList.add("invis")
-gameArea.classList.remove("invis")
+button.addEventListener("click", function () {
+    back.classList.add("invis")
+    gameArea.classList.remove("invis")
 })
 
 

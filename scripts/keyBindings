@@ -8,7 +8,6 @@ function moveUp(person) {
         let position = parseInt(topPosition)
         position -= 30
         person.style.top = `${position}px`
-
     }
 }
 
@@ -28,39 +27,3 @@ function moveDown(person) {
 function fromPxToNumber(pixel) {
     return parseInt(pixel.split("px")[0])
 }
-// function moveRight(person) {
-//     let leftPosition = window.getComputedStyle(person).getPropertyValue('left')
-//     if ((fromPxToNumber(person.style.left) + person.width) >= window.innerWidth) {
-//         return
-//     } else {
-//         if (person === vader) {
-//             let position = parseInt(leftPosition)
-//             position += 17
-//             person.style.left = `${position}px`
-//         }
-//         else {
-//             let position = parseInt(leftPosition)
-//             position += 30
-//             person.style.left = `${position}px`
-//         }
-//     }
-
-// }
-
-// function moveLeft(person) {
-//     let leftPosition = window.getComputedStyle(person).getPropertyValue('left')
-//     if (person.style.left <= "0px") {
-//         return
-//     } else {
-//         if (person === vader) {
-//             let position = parseInt(leftPosition)
-//             position -= 17
-//             person.style.left = `${position}px`
-//         }
-//         else {
-//             let position = parseInt(leftPosition)
-//             position -= 30
-//             person.style.left = `${position}px`
-//         }
-//     }
-// }

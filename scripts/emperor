@@ -61,6 +61,10 @@ class Emperor {
             } else {
                 light.style.right = `${xPosition + 4}px`
             }
+            if (isTouching(light, game.myVader.vaderP)) {
+                alert("Zapped B..a12!@12421tch")
+                light.remove()
+            }
         }, 1)
     }
 

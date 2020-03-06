@@ -3,7 +3,7 @@ class Game {
         this.myVader = new Vader()
         this.myEmperor = new Emperor()
     }
-    start(){
+    start() {
         game.myVader.render()
         game.myEmperor.render()
     }

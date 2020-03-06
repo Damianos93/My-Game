@@ -32,10 +32,15 @@ class Vader {
         clearInterval(cookieInterval)
       } else {
         cookie.style.left = `${xPosition + 4}px`
-      }     
+      }
+      if (isTouching(cookie, game.myEmperor.emperorP)) {
+        let explosion = document.createElement("img")
+        explosion.src = "images/explo.gif"
+        alert("Choked M1!@$124er")
+        cookie.remove()
+      }
     }, 1)
-    if (isTouching(this.createCookieElement(), game.myEmperor.emperorP)) {
-      alert("choked")}
+
   }
   moveVader(event) {
     switch (event.key) {
