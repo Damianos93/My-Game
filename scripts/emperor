@@ -2,6 +2,7 @@ class Emperor {
     constructor(position) {
         this.emperorP;
         this.moveEmperor = this.moveEmperor.bind(this)
+        this.incrementer=0;
     }
     moveEmperor(event) {
         switch (event.key) {
@@ -59,53 +60,17 @@ class Emperor {
                 light.remove()
                 clearInterval(lightInterval)
             } else {
-                light.style.right = `${xPosition + 4}px`
+                light.style.right = `${xPosition + 10}px`
             }
             if (isTouching(light, game.myVader.vaderP)) {
-                alert("Zapped B..a12!@12421tch")
                 light.remove()
+                this.incrementer++
+                emperorscore.innerHTML=this.incrementer
+                let arghSound = new Audio('./music/Scream+11.mp3')
+                arghSound.play()
+                clearInterval(lightInterval)
             }
         }, 1)
     }
 
-    moveUp(person) {
-        let topPosition = window.getComputedStyle(person).getPropertyValue('top')
-        if (person.style.top === "0px") {
-            return
-        } else {
-            if (person === game.vader) {
-                let position = parseInt(topPosition)
-                position -= 17
-                person.style.top = `${position}px`
-            }
-            else {
-                let position = parseInt(topPosition)
-                position -= 30
-                person.style.top = `${position}px`
-            }
-        }
-    }
-
-    moveDown(person) {
-        let topPosition = window.getComputedStyle(person).getPropertyValue('top')
-        if ((fromPxToNumber(person.style.top) + person.height) >= window.innerHeight) {
-            position = 0;
-            person.style.top = `${position}px`
-            return
-        } else {
-            if (person === vader) {
-                let position = parseInt(topPosition)
-                position += 17
-                person.style.top = `${position}px`
-            }
-            else {
-                let position = parseInt(topPosition)
-                position += 35
-                person.style.top = `${position}px`
-            }
-        }
-    }
-    fromPxToNumber(pixel) {
-        return parseInt(pixel.split("px")[0])
-    }
 }

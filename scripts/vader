@@ -3,6 +3,7 @@ class Vader {
     // this.position = position;
     this.vaderP;
     this.moveVader = this.moveVader.bind(this)
+    this.incrementer = 0;
   }
   throwCookie() {
     let cookie = this.createCookieElement()
@@ -31,13 +32,17 @@ class Vader {
         cookie.remove()
         clearInterval(cookieInterval)
       } else {
-        cookie.style.left = `${xPosition + 4}px`
+        cookie.style.left = `${xPosition + 10}px`
       }
       if (isTouching(cookie, game.myEmperor.emperorP)) {
-        let explosion = document.createElement("img")
-        explosion.src = "images/explo.gif"
-        alert("Choked M1!@$124er")
+        // let explosion = document.createElement("img")
+        // explosion.src = "images/explo.gif"
         cookie.remove()
+        this.incrementer++
+        vaderscore.innerHTML = this.incrementer
+        let arghSound = new Audio('./music/scream+3.mp3')
+        arghSound.play()
+        clearInterval(cookieInterval)
       }
     }, 1)
 
@@ -50,11 +55,12 @@ class Vader {
         break;
       case "s":
         event.preventDefault()
-        moveDown(game.myVader.vaderP)
+        moveDown(this.vaderP)
         break;
       case "q":
         event.preventDefault()
         this.throwCookie()
+        break;
       default:
         break;
     }
@@ -69,9 +75,7 @@ class Vader {
     let gameArea = document.getElementById("gameArea")
     gameArea.append(this.vaderP)
   }
-  fromPxToNumber(pixel) {
-    return parseInt(pixel.split("px")[0])
-  }
+
 }
 
 // let myVader= new Vader()

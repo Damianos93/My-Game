@@ -1,7 +1,8 @@
 function moveUp(person) {
-    let test = this
     let topPosition = window.getComputedStyle(person).getPropertyValue('top')
-    if (person.style.top === "0px") {
+    if (fromPxToNumber(person.style.top) <= 0) {
+        position = window.innerHeight - person.height;
+        person.style.top = `${position}px`
         return
     }
     else {
